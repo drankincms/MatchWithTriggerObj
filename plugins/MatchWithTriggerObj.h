@@ -68,6 +68,7 @@ class MatchWithTriggerObj : public edm::EDAnalyzer {
       virtual void endJob() override;
     
       virtual bool hasWasMother(const reco::GenParticle );
+      virtual bool isMatchedWithTrigger(const reco::GenParticle, trigger::TriggerObjectCollection);
 
       //virtual void beginRun(edm::Run const&, edm::EventSetup const&) override;
       //virtual void endRun(edm::Run const&, edm::EventSetup const&) override;
