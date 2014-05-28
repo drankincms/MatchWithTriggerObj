@@ -38,7 +38,7 @@ MatchWithTriggerObj::analyze(const edm::Event& iEvent, const edm::EventSetup& iS
     
     
     bool changedConfig = false;
-    if (!hltConfig.init(iEvent.getRun(), iSetup, "HLT", changedConfig)) {
+    if (!hltConfig.init(iEvent.getRun(), iSetup, "HLT2", changedConfig)) {
         cout << "Initialization of HLTConfigProvider failed!!" << endl;
         return;
     }
@@ -46,25 +46,25 @@ MatchWithTriggerObj::analyze(const edm::Event& iEvent, const edm::EventSetup& iS
         std::cout << "the curent menu is " << hltConfig.tableName() << std::endl;
         triggerBit = -1;
         for (size_t j = 0; j < hltConfig.triggerNames().size(); j++) {
-            if (TString(hltConfig.triggerNames()[j]).Contains("HLT_Mu8_Ele17_CaloIdT_CaloIsoVL_TrkIdVL_TrkIsoVL")) triggerBit = j;
+            if (TString(hltConfig.triggerNames()[j]).Contains("HLT_Mu10_Ele20_WP80")) triggerBit = j;
         }
         if (triggerBit == -1) cout << "HLT path not found" << endl;
        
     }
     
-    edm::InputTag triggerResultsLabel = edm::InputTag("TriggerResults", "", "HLT");
+    edm::InputTag triggerResultsLabel = edm::InputTag("TriggerResults", "", "HLT2");
     edm::Handle<edm::TriggerResults> triggerResults;
     iEvent.getByLabel(triggerResultsLabel, triggerResults);
     
     //open the trigger summary
     
-    edm::InputTag triggerSummaryLabel_ = edm::InputTag("hltTriggerSummaryAOD", "", "HLT");
+    edm::InputTag triggerSummaryLabel_ = edm::InputTag("hltTriggerSummaryAOD", "", "HLT2");
     edm::Handle<trigger::TriggerEvent> triggerSummary;
     iEvent.getByLabel(triggerSummaryLabel_, triggerSummary);
     
     //trigger objects we want to match
-    edm::InputTag MuonFilterTag = edm::InputTag("hltL1sL1Mu3p5EG12ORL1MuOpenEG12L3Filtered8", "", "HLT");
-    edm::InputTag ElectronFilterTag = edm::InputTag("hltMu8Ele17CaloIdTCaloIsoVLTrkIdVLTrkIsoVLTrackIsoFilter", "", "HLT");
+    edm::InputTag MuonFilterTag = edm::InputTag("hltL3fL1sMuEGL1f0L2f16QL3Filtered10Q", "", "HLT2");
+    edm::InputTag ElectronFilterTag = edm::InputTag("hltEle20WP80TrackIsoFilter", "", "HLT2");
  
     //find the index corresponding to the event
     size_t MuonFilterIndex = (*triggerSummary).filterIndex(MuonFilterTag);
