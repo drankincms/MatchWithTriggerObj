@@ -140,22 +140,22 @@ MatchWithTriggerObj::beginJob()
     histos2D_[ "pt2Defficiency" ]->SetXTitle( "muon p_{T} (GeV)" );
     histos2D_[ "pt2Defficiency" ]->SetYTitle( "electron p_{T} (GeV)" );
     
-    histos1D_[ "ptMuonLegDenom" ] = fileService->make< TH1D >( "ptMuonLegDenom", "nb of muon", 10, 0., 100);
+    histos1D_[ "ptMuonLegDenom" ] = fileService->make< TH1D >( "ptMuonLegDenom", "nb of muon", 30, 0., 100);
     histos1D_[ "ptMuonLegDenom" ]->SetXTitle( "muon p_{T} (GeV)" );
     
-    histos1D_[ "ptMuonLegPassing" ] = fileService->make< TH1D >( "ptMuonLegPassing", "nb of muon passing", 10, 0., 100);
+    histos1D_[ "ptMuonLegPassing" ] = fileService->make< TH1D >( "ptMuonLegPassing", "nb of muon passing", 30, 0., 100);
     histos1D_[ "ptMuonLegPassing" ]->SetXTitle( "muon p_{T} (GeV)" );
     
-    histos1D_[ "ptMuonLegEfficiency" ] = fileService->make< TH1D >( "ptMuonLegEfficiency", "efficiency", 10, 0., 100);
+    histos1D_[ "ptMuonLegEfficiency" ] = fileService->make< TH1D >( "ptMuonLegEfficiency", "efficiency", 30, 0., 100);
     histos1D_[ "ptMuonLegEfficiency" ]->SetXTitle( "muon p_{T} (GeV)" );
     
-    histos1D_[ "ptElectronLegDenom" ] = fileService->make< TH1D >( "ptElectronLegDenom", "nb of electron", 10, 0., 100);
+    histos1D_[ "ptElectronLegDenom" ] = fileService->make< TH1D >( "ptElectronLegDenom", "nb of electron", 30, 0., 100);
     histos1D_[ "ptElectronLegDenom" ]->SetXTitle( "electron p_{T} (GeV)" );
     
-    histos1D_[ "ptElectronLegPassing" ] = fileService->make< TH1D >( "ptElectronLegPassing", "nb of electron passing", 10, 0., 100);
+    histos1D_[ "ptElectronLegPassing" ] = fileService->make< TH1D >( "ptElectronLegPassing", "nb of electron passing", 30, 0., 100);
     histos1D_[ "ptElectronLegPassing" ]->SetXTitle( "electron p_{T} (GeV)" );
     
-    histos1D_[ "ptElectronLegEfficiency" ] = fileService->make< TH1D >( "ptElectronLegEfficiency", "efficiency", 10, 0., 100);
+    histos1D_[ "ptElectronLegEfficiency" ] = fileService->make< TH1D >( "ptElectronLegEfficiency", "efficiency", 30, 0., 100);
     histos1D_[ "ptElectronLegEfficiency" ]->SetXTitle( "electron p_{T} (GeV)" );
 
 
@@ -170,10 +170,10 @@ MatchWithTriggerObj::endJob()
     histos2D_[ "pt2Defficiency" ]->Divide(histos2D_[ "ptPassing" ],histos2D_[ "ptDenom" ],1,1);
     
     histos1D_[ "ptMuonLegEfficiency" ]->Sumw2();
-    histos1D_[ "ptMuonLegEfficiency" ]->Divide(histos1D_[ "ptMuonLegPassing" ], histos1D_[ "ptMuonLegDenom" ], 1,1);
+    histos1D_[ "ptMuonLegEfficiency" ]->Divide(histos1D_[ "ptMuonLegPassing" ], histos1D_[ "ptMuonLegDenom" ], 1,1,"B");
     
     histos1D_[ "ptElectronLegEfficiency" ]->Sumw2();
-    histos1D_[ "ptElectronLegEfficiency" ]->Divide(histos1D_[ "ptElectronLegPassing" ], histos1D_[ "ptElectronLegDenom" ], 1,1);
+    histos1D_[ "ptElectronLegEfficiency" ]->Divide(histos1D_[ "ptElectronLegPassing" ], histos1D_[ "ptElectronLegDenom" ], 1,1,"B");
 
   }
 
