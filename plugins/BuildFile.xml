@@ -1,6 +1,6 @@
 <export>
 </export>
-<library name="MatchWithTriggerObj_plugins" file="*.cc">
+<library name="triggerTutorialMatchWithTriggerObj_plugins" file="*.cc">
   <use   name="FWCore/Framework"/>
   <use   name="FWCore/PluginManager"/>
   <use   name="FWCore/ParameterSet"/>
