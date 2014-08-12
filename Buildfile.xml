@@ -10,3 +10,6 @@
 <use   name="PhysicsTools/UtilAlgos"/>
 <use   name="HLTrigger/HLTcore"/>
 <use   name="DataFormats/HLTReco"/>
+<export>
+  <lib name="1">
+</export>
